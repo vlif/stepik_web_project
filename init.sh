@@ -11,8 +11,8 @@ sudo /etc/init.d/nginx restart
 
 
 sudo gunicorn -b 0.0.0.0:8080 hello:app &
-sudo gunicorn -b 0.0.0.0:8000 ask.wsgi:application &
-
+#sudo gunicorn -b 0.0.0.0:8000 ask.wsgi:application &
+sudo gunicorn -b 0.0.0.0:8000 --pythonpath /home/box/web/ask ask.wsgi:application &
 
 #django-admin startproject ask # создать проект
 #python ./ask/manage.py startapp qa # создать приложение
