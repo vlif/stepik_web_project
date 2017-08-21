@@ -11,7 +11,7 @@ sudo /etc/init.d/nginx restart
 
 
 sudo gunicorn -b 0.0.0.0:8080 hello:app &
-sudo gunicorn -b 0.0.0.0:8000 ask.qa:test &
+sudo gunicorn -b 0.0.0.0:8000 ask.wsgi:application &
 
 
 #django-admin startproject ask # создать проект
