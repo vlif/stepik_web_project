@@ -9,9 +9,7 @@ sudo /etc/init.d/nginx restart
 #sudo pip install --upgrade django
 #sudo pip install --upgrade gunicorn
 
-
 sudo gunicorn -b 0.0.0.0:8080 hello:app &
-#sudo gunicorn -b 0.0.0.0:8000 ask.wsgi:application &
 sudo gunicorn -b 0.0.0.0:8000 --pythonpath /home/box/web/ask ask.wsgi:application &
 
 #django-admin startproject ask # создать проект
@@ -20,4 +18,6 @@ sudo gunicorn -b 0.0.0.0:8000 --pythonpath /home/box/web/ask ask.wsgi:applicatio
 #sudo ln -s /home/box/web/etc/gunicorn.conf /etc/gunicorn.d/test
 #sudo /etc/init.d/gunicorn restart
 
-#sudo /etc/init.d/mysql restart
+sudo /etc/init.d/mysql start
+mysql -u root
+CREATE DATABASE stepik CHARACTER SET utf8;
