@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -17,6 +18,9 @@ class Question(models.Model):
 	added_at = models.DateTimeField(blank=True, auto_now_add=True)
 	rating = models.IntegerField(default=0)
 	author = models.ForeignKey(User) #, on_delete=models.SET_NULL
+	# Если не указать параметр related_name при создании связи, 
+    # то для поля author в модели User будет создана обратная ссылка question_set
+    # и для поля likes будет попытка создать такое же поле  question_set, что приводит к ошибке, т.к. имена совпадают.
 	likes = models.ManyToManyField(User, related_name='question_like_user')
 
 class Answer(models.Model):

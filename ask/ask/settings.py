@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for ask project.
 
@@ -25,6 +26,11 @@ SECRET_KEY = ')sji-q8+re(-z-(z!#%*0n9#nyj#$1!q#q=zgshyd25tnn+e*5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Джанга по умолчанию блокирует запросы у которых заголовок Host не находится в ALLOWED_HOSTS в settings.py
+# ALLOWED_HOSTS это список тех хостов, которые обслуживает джанго-сервер
+# Например есть у вас на одном сервере два домена example1.com и example2.com, то в ALLOWED_HOSTS у вас бы было что-то типа ["*.example1.com", "*.example2.com"]
+# И это работает даже когда заголовок Host в запросе не указан
+# А тестирующая система на втором тесте как раз и делает такой запрос без заголовков вообще, т.е. просто "GET / HTTP/1.1" и больше ничего. (это можно посмотреть в access.log)
 ALLOWED_HOSTS = [
     '*'
 ]
@@ -32,6 +38,7 @@ ALLOWED_HOSTS = [
 
 # Application definition
 
+# Чтобы в бд создались таблицы надо в настройках прописать 'qa' в INSTALLED_APPS
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
