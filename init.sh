@@ -19,5 +19,17 @@ sudo gunicorn -b 0.0.0.0:8000 --pythonpath /home/box/web/ask ask.wsgi:applicatio
 #sudo /etc/init.d/gunicorn restart
 
 sudo /etc/init.d/mysql start
-mysql -u root
-CREATE DATABASE stepik CHARACTER SET utf8;
+
+#sudo /etc/init.d/mysql restart
+#mysql -uroot -e "create database myproject;"
+#mysql -uroot -e "CREATE USER 'enth'@'localhost' IDENTIFIED BY 'password';"
+#mysql -uroot -e "GRANT ALL PRIVILEGES ON * . * TO 'enth'@'localhost';"
+#mysql -uroot -e "FLUSH PRIVILEGES;"
+
+#mysql -uroot -e "CREATE DATABASE box_django;"
+#mysql -uroot -e "CREATE USER 'box'@'localhost' IDENTIFIED BY '1234';"
+#mysql -uroot -e "GRANT ALL PRIVILEGES ON box_django.* TO 'box'@'localhost';"
+#mysql -uroot -e "FLUSH PRIVILEGES;"
+
+#mysql -uroot -e "CREATE DATABASE stepic_web;"
+#mysql -uroot -e "GRANT ALL PRIVILEGES ON stepic_web.* TO 'box'@'localhost' WITH GRANT OPTION;"

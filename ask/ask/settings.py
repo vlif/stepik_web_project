@@ -24,7 +24,6 @@ SECRET_KEY = ')sji-q8+re(-z-(z!#%*0n9#nyj#$1!q#q=zgshyd25tnn+e*5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 # Джанга по умолчанию блокирует запросы у которых заголовок Host не находится в ALLOWED_HOSTS в settings.py
 # ALLOWED_HOSTS это список тех хостов, которые обслуживает джанго-сервер
 # Например есть у вас на одном сервере два домена example1.com и example2.com, то в ALLOWED_HOSTS у вас бы было что-то типа ["*.example1.com", "*.example2.com"]
@@ -37,6 +36,7 @@ ALLOWED_HOSTS = [
 
 # Application definition
 
+# Чтобы в бд создались таблицы надо в настройках прописать 'qa' в INSTALLED_APPS
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'qa',
 ]
 
 MIDDLEWARE = [
@@ -81,9 +82,17 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #}
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'stepik',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
